@@ -4,7 +4,7 @@ import scala.math.BigDecimal.RoundingMode
 
 case class Charge(service: String, serviceCharge: BigDecimal, doseCharge: BigDecimal = 0.00, dosage: Int = 0) {
 
-  def ageToDiscount(age: Int, hasInsurance: Boolean): BigDecimal => BigDecimal = { total =>
+  private def ageToDiscount(age: Int, hasInsurance: Boolean): BigDecimal => BigDecimal = { total =>
    val perc: BigDecimal = age match {
       case des if des < 5 => 0.6
       case des if des >= 65 && des <= 70 => 0.4
